@@ -1,0 +1,9 @@
+# DockerFile
+FROM microsoft/iis
+
+# Install build tools
+RUN powershell add-windowsfeature web-asp-net45
+
+# Create an entrypoint so container doesn't exit
+CMD Write-Host IIS Started...; \
+         while ($true) { Start-Sleep -seconds 3600}
